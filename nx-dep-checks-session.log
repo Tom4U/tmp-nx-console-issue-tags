@@ -1,0 +1,81 @@
+﻿PS F:\tmp\tags-test> nx run-many --target=lint --all
+
+    √  nx run my-webapp1:lint  [existing outputs match the cache, left as is]
+    √  nx run my-lib1:lint  [existing outputs match the cache, left as is]
+
+ —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+ >  NX   Successfully ran target lint for 2 projects (135ms)
+
+   Nx read the output from the cache instead of running the command for 2 out of 2 tasks.
+PS F:\tmp\tags-test> npm i --prefix libs compare-versions
+
+added 2 packages, and audited 3 packages in 900ms
+
+found 0 vulnerabilities
+PS F:\tmp\tags-test> nx run-many --target=lint --all
+    ×  nx run my-lib1:lint
+       Linting "my-lib1"...
+ >  NX   Running target lint for 2 projects
+F:\tmp\tags-test\libs\package.json
+  5:5  error  The "compare-versions" package is not used by "my-lib1" project  @nx/dependency-checks
+
+✖ 1 problem (1 error, 0 warnings)
+  1 error and 0 warnings potentially fixable with the `--fix` option.
+    √    1/1 succeeded [1 read from cache]
+Lint errors found in the listed files.
+
+
+
+
+ —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+ >  NX   Ran target lint for 2 projects (2s)
+
+    √    1/2 succeeded [1 read from cache]
+
+    ×    1/2 targets failed, including the following:
+         - nx run my-lib1:lint
+PS F:\tmp\tags-test> nx run-many --target=lint --all
+
+PS F:\tmp\tags-test> npm un --prefix libs compare-versions
+
+PS F:\tmp\tags-test> nx run-many --target=lint --all
+    ×  nx run my-lib1:lint
+       Linting "my-lib1"...
+ >  NX   Running target lint for 2 projects
+F:\tmp\tags-test\libs\package.json
+  5:5  error  The "compare-versions" package is not used by "my-lib1" project  @nx/dependency-checks
+
+✖ 1 problem (1 error, 0 warnings)
+  1 error and 0 warnings potentially fixable with the `--fix` option.
+    √    1/1 succeeded [1 read from cache]
+Lint errors found in the listed files.
+
+
+
+
+ —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+ >  NX   Ran target lint for 2 projects (2s)
+
+    √    1/2 succeeded [1 read from cache]
+
+    ×    1/2 targets failed, including the following:
+         - nx run my-lib1:lint
+
+PS F:\tmp\tags-test> npm un --prefix libs compare-versions
+
+removed 1 package, and audited 2 packages in 860ms
+
+found 0 vulnerabilities
+PS F:\tmp\tags-test> nx run-many --target=lint --all
+
+    √  nx run my-webapp1:lint  [existing outputs match the cache, left as is]
+    √  nx run my-lib1:lint (2s)
+
+ —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+ >  NX   Successfully ran target lint for 2 projects (2s)
+
+   Nx read the output from the cache instead of running the command for 1 out of 2 tasks.
